@@ -104,7 +104,7 @@ public class MeshTileMap : MonoBehaviour {
 
     void LoadMap()
     {
-        mapData = new MapData(mapFileName, enemyContainer, enemyPrefab);
+        mapData = new MapData(mapFileName, enemyContainer, enemyPrefab, player);
         /*print(mapData.tileCount);
         print(mapData.tileSetName);
         print(mapData.horizontal_tiles);

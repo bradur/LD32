@@ -13,7 +13,7 @@ public class MapData {
     public int tileCount;
     private Enemy enemyPrefab;
 
-    public MapData(string mapFile, GameObject enemyContainer, Enemy enemyPrefab)
+    public MapData(string mapFile, GameObject enemyContainer, Enemy enemyPrefab, Player player)
     {
         foreach(Transform child in enemyContainer.transform){
             if (Application.isPlaying)
@@ -50,15 +50,42 @@ public class MapData {
         {
             TmxObjectGroup.TmxObject enemy = map.ObjectGroups[0].Objects[i];
             //Debug.Log("object at [" + enemy.X + ", " + enemy.Y + "]");
-            int enemyX = (int)enemy.X;
-            int enemyY = (int)enemy.Y;
-            Vector3 worldPos = new Vector3(-(enemyX / tile_width), 0.01f, enemyY / tile_height);
+            int enemyX = (int)enemy.X / tile_width;
+            int enemyY = (int)enemy.Y / tile_height;
+            Vector3 worldPos = new Vector3(-enemyX, 0.01f, enemyY);
 
             //GetRelativePosition(enemyX, enemyY);
             Enemy enemyObject = (Enemy)GameObject.Instantiate(enemyPrefab, worldPos, enemyPrefab.transform.rotation);
             enemyObject.transform.parent = enemyContainer.transform;
             enemyObject.transform.localPosition = worldPos;
             enemies[i] = enemyObject;
+        }
+
+        int startEndCount = map.ObjectGroups[1].Objects.Count;
+        enemies = new Enemy[enemyCount];
+        for (int i = 0; i < startEndCount; i++)
+        {
+            TmxObjectGroup.TmxObject startEnd = map.ObjectGroups[1].Objects[i];
+            //Debug.Log("object at [" + enemy.X + ", " + enemy.Y + "]");
+            int startEndX = (int)startEnd.X / tile_width;
+            int startEndY = (int)startEnd.Y / tile_height;
+            Vector3 worldPos = new Vector3(-startEndX + 0.5f, 1f, startEndY - 1.5f);
+            Debug.Log(startEnd.Name);
+            if (startEnd.Name == "Start")
+            {
+                player.Spawn(worldPos);
+            }
+            else if (startEnd.Name == "End")
+            {
+                LevelEndTrigger end = (LevelEndTrigger)GameObject.Instantiate(Resources.Load("LevelEndTrigger"), worldPos, Quaternion.identity);
+            }
+            //Vector3 worldPos = new Vector3(-(enemyX / tile_width), 0.01f, enemyY / tile_height);
+
+            //GetRelativePosition(enemyX, enemyY);
+            //Enemy enemyObject = (Enemy)GameObject.Instantiate(enemyPrefab, worldPos, enemyPrefab.transform.rotation);
+            //enemyObject.transform.parent = enemyContainer.transform;
+            //enemyObject.transform.localPosition = worldPos;
+            //enemies[i] = enemyObject;
         }
     }
 
