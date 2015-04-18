@@ -63,7 +63,7 @@ public class MapData {
             Debug.Log(startEnd.Name);
             if (startEnd.Name == "Start")
             {
-                player.Spawn(worldPos);
+                player.Spawn(worldPos, tile_width, tile_height);
             }
             else if (startEnd.Name == "End")
             {

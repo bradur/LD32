@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
     bool shotInTheAir = false;
     public float projectileSpeed;
     private Projectile projectile;
+    private int sizeX;
+    private int sizeY;
 
     // Use this for initialization
     void Start () {
@@ -30,20 +32,31 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void Teleport(Vector3 pos)
+    {
+        Vector3 newpos = new Vector3((int)Mathf.Round(pos.x), 0.5f, (int)Mathf.Round(pos.z));
+        transform.position = pos;
+        this.shotInTheAir = false;
+    }
+
     public void Shoot(){
         if (!shotInTheAir)
         {
-            shotInTheAir = true;
-            Vector3 projectilePos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            this.shotInTheAir = true;
+            //Vector3 projectilePos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Vector3 projectilePos = transform.forward * 2;
             GameObject projectileObject = (GameObject)Instantiate(Resources.Load("Projectile"), transform.position, transform.rotation);
             Rigidbody rigidbody = projectileObject.GetComponent<Rigidbody>();
-            projectile = projectileObject.GetComponent<Projectile>();
+            this.projectile = projectileObject.GetComponent<Projectile>();
+            this.projectile.player = this;
             rigidbody.AddForce(-transform.forward * projectileSpeed);
         }
     }
 
-    public void Spawn(Vector3 pos)
+    public void Spawn(Vector3 pos, int x, int y)
     {
+        this.sizeX = x;
+        this.sizeY = y;
         transform.position = new Vector3(pos.x, transform.position.y, pos.z);
     }
 }
