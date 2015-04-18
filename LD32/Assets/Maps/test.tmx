@@ -147,4 +147,5 @@
   <object gid="3" x="256" y="512"/>
   <object gid="3" x="192" y="512"/>
  </objectgroup>
+ <objectgroup name="Objects"/>
 </map>

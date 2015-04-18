@@ -6,6 +6,7 @@ TagManager:
   tags:
   - wall
   - explosion
+  - mirror
   layers:
   - Default
   - TransparentFX

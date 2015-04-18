@@ -108,7 +108,37 @@ public class MapData {
         {
             GameObject.Destroy(wallPref);
         }
-        
+
+
+        int objectCount = map.ObjectGroups[3].Objects.Count;
+
+        for (int i = 0; i < objectCount; i++)
+        {
+            TmxObjectGroup.TmxObject genericObject = map.ObjectGroups[3].Objects[i];
+            //Debug.Log("object at [" + enemy.X + ", " + enemy.Y + "]");
+            int startEndX = (int)genericObject.X / tile_width;
+            int startEndY = (int)genericObject.Y / tile_height;
+            Vector3 worldPos = new Vector3(-startEndX + 0.5f, 0.5f, startEndY -1.5f);
+
+            if (genericObject.Type == "mirror")
+            {
+                GameObject mirrorPrefab = (GameObject)GameObject.Instantiate(Resources.Load("mirror"));
+                GameObject mirror = (GameObject)GameObject.Instantiate(mirrorPrefab, worldPos, mirrorPrefab.transform.rotation);
+                //wallObject.transform.parent = wallContainer.transform;
+                //wallObject.transform.localPosition = worldPos;
+            }
+
+            //LevelEndTrigger end = endObject.GetComponent<LevelEndTrigger>();
+
+            //Vector3 worldPos = new Vector3(-(enemyX / tile_width), 0.01f, enemyY / tile_height);
+
+            //GetRelativePosition(enemyX, enemyY);
+            //Enemy enemyObject = (Enemy)GameObject.Instantiate(enemyPrefab, worldPos, enemyPrefab.transform.rotation);
+            //enemyObject.transform.parent = enemyContainer.transform;
+            //enemyObject.transform.localPosition = worldPos;
+            //enemies[i] = enemyObject;
+        }
+
     }
 
     

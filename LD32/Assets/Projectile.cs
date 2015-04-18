@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour {
 
     public Player player;
     private Rigidbody rigidbody;
+    private Vector3 lastPos;
     // Use this for initialization
     void Start () {
     }
@@ -27,6 +28,20 @@ public class Projectile : MonoBehaviour {
             //Debug.Log("Explode");
             //Destroy(gameObject);
         }
+        else if (coll.gameObject.tag == "mirror")
+        {
+           /*foreach (ContactPoint contactPoint in coll.contacts)
+           {
+              Quaternion newVelocity = Quaternion.AngleAxis(180, contactPoint.normal) * transform.forward * -1;
+           }
+           transform.rotation = newVelocity;*/
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, lastPos, out hit, 100f)){
+                rigidbody.velocity = (Vector3.Reflect(hit.point, hit.normal));
+            }
+
+           //rigidbody.velocity = Vector3.Reflect(transform.position, Vector3.right);
+        }
     }
 
     public void Init(Player player)
@@ -46,5 +61,6 @@ public class Projectile : MonoBehaviour {
     {
         //gameObject.SetActive(true);
         rigidbody.AddForce(force);
+        lastPos = transform.position;
     }
 }
