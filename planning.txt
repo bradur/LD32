@@ -1,0 +1,41 @@
+Theme - Unconventional Weapon
+
+(According to Wikipedia)
+== Improvised weapon
+
+Game where everything is a weapon:
+- Enemies can be used as weapons?
+- More like "ammo" or actual weapons?
+- How would the pickup mechanics work? Or is it not "pickup"?
+
+Teleportation gun game:
+
+   World
+    - Level progression
+    - Tilemapped
+    - A level is:
+        - Start
+        - Enemies
+        - Possible pickups?
+        - 
+        - End
+
+    Enemies
+    - Die when the player "lands" near them
+    - Kill the player when he gets too near
+        - How should this happen?
+
+    Player
+    - Cannot move conventionally(heh)
+    - Dies of one hit
+
+    Gun:
+    - Shoots a slow projectile
+    - Only one projectile in the air at a time
+    - Teleports the player where the projectile hits
+    - If enemies nearby, causes an explosion, killing
+      the enemies
+
+    Other:
+    - Mirrors that make the projectile rebound?
+
