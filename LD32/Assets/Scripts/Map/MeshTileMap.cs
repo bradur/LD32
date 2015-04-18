@@ -8,18 +8,22 @@ using System.Collections.Generic;
 [RequireComponent(typeof(MeshCollider))]
 public class MeshTileMap : MonoBehaviour {
 
-    public int tileCountX = 10;                     // number of tiles horizontally
-    public int tileCountZ = 10;                     // number of tiles vertically
-    public float tileSize = 1f;                     // size of a tile in unity world space
+    //public int tileCountX = 10;                     // number of tiles horizontally
+    //public int tileCountZ = 10;                     // number of tiles vertically
+    //public float tileSize = 1f;                     // size of a tile in unity world space
 
     //public Texture2D[] spriteSheet;                 // contains 2d textures to be drawn ?
-    public int tileResolution;                      // resolution of a single texture in pixels
+    //public int tileResolution;                      // resolution of a single texture in pixels
 
     public float tileUnit = 0.25f;
 
     public string mapFileName = "Assets/Maps/test.tmx";
+    public Player player;
+    public GameObject enemyContainer;
 
+    [HideInInspector]
     public Vector2[] tiles;
+    
     /*Vector2 tileWood = new Vector2(0, 0);
     Vector2 tileMud = new Vector2(1, 0);
     Vector2 tileWater = new Vector2(3, 3);
@@ -40,7 +44,6 @@ public class MeshTileMap : MonoBehaviour {
     private int squareCount;
     private Mesh mesh;
     MapData mapData;
-    Player player;
 
     void Start () {
         GenerateMesh();
@@ -100,7 +103,7 @@ public class MeshTileMap : MonoBehaviour {
 
     void LoadMap()
     {
-        mapData = new MapData(mapFileName);
+        mapData = new MapData(mapFileName, enemyContainer);
         /*print(mapData.tileCount);
         print(mapData.tileSetName);
         print(mapData.horizontal_tiles);
@@ -124,7 +127,7 @@ public class MeshTileMap : MonoBehaviour {
     }
 
 
-    void BuildMesh()
+    /*void BuildMesh()
     {
         for (int z = 0; z < tileCountZ; z++)
         {
@@ -135,15 +138,15 @@ public class MeshTileMap : MonoBehaviour {
                 GenerateSquare(x, z, tiles[randomItem]);
             }
         }
-    }
+    }*/
 
     void GenerateSquare(int x, int z, Vector2 texture)
     {
 
-        vertices.Add(new Vector3(x, 0, z));
-        vertices.Add(new Vector3(x + 1, 0, z));
-        vertices.Add(new Vector3(x + 1, 0, z - 1));
-        vertices.Add(new Vector3(x, 0, z - 1));
+        vertices.Add(new Vector3(-x, 0, z));
+        vertices.Add(new Vector3(-x + 1, 0, z));
+        vertices.Add(new Vector3(-x + 1, 0, z - 1));
+        vertices.Add(new Vector3(-x, 0, z - 1));
 
         normals.Add(Vector3.up);
         normals.Add(Vector3.up);
