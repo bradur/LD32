@@ -14,39 +14,8 @@ public class MapData {
     private Enemy enemyPrefab;
     private GameObject wallPref;
 
-    private void PurgeData(Transform enemyContainer, Transform wallContainer)
-    {
-        foreach (Transform child in enemyContainer)
-        {
-            if (Application.isPlaying)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-            /*else
-            {
-                Debug.Log("Destroying...");
-                GameObject.DestroyImmediate(child.gameObject);
-            }*/
-
-        }
-        foreach (Transform child in wallContainer)
-        {
-            if (Application.isPlaying)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-            /*else
-            {
-                Debug.Log("Destroying...");
-                GameObject.DestroyImmediate(child.gameObject);
-            }*/
-
-        }
-    }
-
     public MapData(string mapFile, GameObject enemyContainer, GameObject wallContainer, Enemy enemyPrefab, Player player, Material tileSheet)
     {
-        PurgeData(enemyContainer.transform, wallContainer.transform);
         //enemyPrefab = Resources.Load("Enemy") as GameObject;
         TmxMap map = new TmxMap(mapFile);
         horizontal_tiles = map.Width;
@@ -64,7 +33,7 @@ public class MapData {
             tiles[i] = new MapSquare(map.Layers[0].Tiles[i]);
         }
 
-        /*
+        
         int enemyCount = map.ObjectGroups[0].Objects.Count;
         //enemies = new Enemy[enemyCount];
         for (int i = 0; i < enemyCount; i++)
@@ -108,7 +77,7 @@ public class MapData {
             //enemyObject.transform.parent = enemyContainer.transform;
             //enemyObject.transform.localPosition = worldPos;
             //enemies[i] = enemyObject;
-        }*/
+        }
 
 
         int wallCount = map.ObjectGroups[2].Objects.Count;
@@ -135,7 +104,11 @@ public class MapData {
             //enemyObject.transform.localPosition = worldPos;
             //enemies[i] = enemyObject;
         }
-        GameObject.Destroy(wallPref);
+        if (Application.isPlaying)
+        {
+            GameObject.Destroy(wallPref);
+        }
+        
     }
 
     

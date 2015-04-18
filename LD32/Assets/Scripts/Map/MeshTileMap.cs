@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshCollider))]
@@ -95,6 +95,7 @@ public class MeshTileMap : MonoBehaviour {
     public void GenerateMesh()
     {
         //mesh = GetComponent<MeshFilter>().mesh;
+        //PurgeData();
         GetTiles();
         
         LoadMap();
@@ -102,10 +103,22 @@ public class MeshTileMap : MonoBehaviour {
         UpdateMesh();
     }
 
+    /*private void PurgeData()
+    {
+        Destroy(GameObject.Find("LevelEndTrigger"));
+        foreach (Transform child in enemyContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in wallContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }*/
 
     void LoadMap()
     {
-        mapData = new MapData(mapFileName, enemyContainer, wallContainer, enemyPrefab, player, GetComponent<MeshRenderer>().material);
+        mapData = new MapData(mapFileName, enemyContainer, wallContainer, enemyPrefab, player, GetComponent<MeshRenderer>().sharedMaterial);
         /*print(mapData.tileCount);
         print(mapData.tileSetName);
         print(mapData.horizontal_tiles);
