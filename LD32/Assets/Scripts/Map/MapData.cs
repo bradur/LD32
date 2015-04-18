@@ -11,11 +11,23 @@ public class MapData {
     public string tileSetName;
     public Enemy[] enemies;
     public int tileCount;
-    private GameObject enemyPrefab;
+    private Enemy enemyPrefab;
 
-    public MapData(string mapFile, GameObject enemyContainer)
+    public MapData(string mapFile, GameObject enemyContainer, Enemy enemyPrefab)
     {
-        enemyPrefab = (GameObject)Resources.Load("Enemy");
+        foreach(Transform child in enemyContainer.transform){
+            if (Application.isPlaying)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+            else
+            {
+                Debug.Log("Destroying...");
+                GameObject.DestroyImmediate(child.gameObject);
+            }
+            
+        }
+        //enemyPrefab = Resources.Load("Enemy") as GameObject;
         TmxMap map = new TmxMap(mapFile);
         horizontal_tiles = map.Width;
         vertical_tiles = map.Height;
@@ -37,14 +49,17 @@ public class MapData {
         for (int i = 0; i < enemyCount; i++)
         {
             TmxObjectGroup.TmxObject enemy = map.ObjectGroups[0].Objects[i];
-            Debug.Log("object at [" + enemy.X + ", " + enemy.Y + "]");
-            Vector3 worldPos = new Vector3((float)enemy.X, 0, (float)enemy.Y);
+            //Debug.Log("object at [" + enemy.X + ", " + enemy.Y + "]");
+            int enemyX = (int)enemy.X;
+            int enemyY = (int)enemy.Y;
+            Vector3 worldPos = new Vector3(-(enemyX / tile_width), 0.01f, enemyY / tile_height);
 
-            //Enemy enemyObject = (Enemy)GameObject.Instantiate(enemyPrefab, worldPos, Quaternion.identity);
-            //enemyObject.transform.parent = enemyContainer.transform;
-            //enemies[i] = enemyObject
+            //GetRelativePosition(enemyX, enemyY);
+            Enemy enemyObject = (Enemy)GameObject.Instantiate(enemyPrefab, worldPos, enemyPrefab.transform.rotation);
+            enemyObject.transform.parent = enemyContainer.transform;
+            enemyObject.transform.localPosition = worldPos;
+            enemies[i] = enemyObject;
         }
-        
     }
 
     public Vector3 GetRelativePosition(int x, int y){
@@ -52,7 +67,9 @@ public class MapData {
         int map_width = tile_width * horizontal_tiles;
         int map_height = tile_height * vertical_tiles;
 
-
+        int x_tilepos = x / tile_width;
+        int y_tilepos = y / tile_height;
+        Debug.Log("[" + x + ", " + y + "] is [" + x_tilepos + ", " + y_tilepos + "]");
 
         return position;
     }

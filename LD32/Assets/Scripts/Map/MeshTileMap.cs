@@ -20,6 +20,7 @@ public class MeshTileMap : MonoBehaviour {
     public string mapFileName = "Assets/Maps/test.tmx";
     public Player player;
     public GameObject enemyContainer;
+    public Enemy enemyPrefab;
 
     [HideInInspector]
     public Vector2[] tiles;
@@ -103,7 +104,7 @@ public class MeshTileMap : MonoBehaviour {
 
     void LoadMap()
     {
-        mapData = new MapData(mapFileName, enemyContainer);
+        mapData = new MapData(mapFileName, enemyContainer, enemyPrefab);
         /*print(mapData.tileCount);
         print(mapData.tileSetName);
         print(mapData.horizontal_tiles);
