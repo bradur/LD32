@@ -40,7 +40,7 @@ public class MeshTileMap : MonoBehaviour {
     private int squareCount;
     private Mesh mesh;
     MapData mapData;
-    
+    Player player;
 
     void Start () {
         GenerateMesh();

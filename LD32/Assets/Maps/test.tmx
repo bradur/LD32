@@ -5,10 +5,21 @@
  </tileset>
  <layer name="Tile Layer 1" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYBzFo3gUj+JRPIpJxADrnAGR
+   eJxjZmBgYCYBMxKphhjMjEZjkx81j3xMK/MGKr2ghyO1/DtqHu54IjXesakf6PQ81OODlvFLLoaZBwD7EQKJ
   </data>
  </layer>
  <objectgroup color="#00aa00" name="Entities">
-  <object gid="2" x="576" y="576"/>
+  <object gid="4" x="768" y="64"/>
+  <object gid="5" x="1152" y="1280"/>
+  <object gid="2" x="1024" y="256"/>
+  <object gid="2" x="1024" y="384"/>
+  <object gid="2" x="576" y="384"/>
+  <object gid="2" x="256" y="384"/>
+  <object gid="2" x="640" y="704"/>
+  <object gid="2" x="1024" y="704"/>
+  <object gid="2" x="1024" y="1088"/>
+  <object gid="2" x="256" y="1088"/>
+  <object gid="2" x="576" y="1088"/>
+  <object gid="2" x="320" y="704"/>
  </objectgroup>
 </map>
