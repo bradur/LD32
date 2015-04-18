@@ -8,13 +8,13 @@ public class Player : MonoBehaviour {
     private Vector3 rotation;
     bool shotInTheAir = false;
     public float projectileSpeed;
-    private Projectile projectile;
     private int sizeX;
     private int sizeY;
 
     // Use this for initialization
     void Start () {
         rotation = new Vector3(0f, rotationMagnitude, 0f);
+        
     }
     
     // Update is called once per frame
@@ -44,12 +44,10 @@ public class Player : MonoBehaviour {
         {
             this.shotInTheAir = true;
             //Vector3 projectilePos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            Vector3 projectilePos = transform.forward * 2;
             GameObject projectileObject = (GameObject)Instantiate(Resources.Load("Projectile"), transform.position, transform.rotation);
-            Rigidbody rigidbody = projectileObject.GetComponent<Rigidbody>();
-            this.projectile = projectileObject.GetComponent<Projectile>();
-            this.projectile.player = this;
-            rigidbody.AddForce(-transform.forward * projectileSpeed);
+            Projectile projectile = projectileObject.GetComponent<Projectile>();
+            projectile.Init(this);
+            projectile.Shoot(-transform.forward * projectileSpeed);
         }
     }
 

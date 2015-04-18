@@ -12,4 +12,12 @@ public class Enemy : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "explosion")
+        {
+            Debug.Log("I've been hit!");
+        }
+    }
 }

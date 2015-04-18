@@ -36,6 +36,18 @@ Teleportation gun game:
     - If enemies nearby, causes an explosion, killing
       the enemies
 
+      Projectile:
+      - Can only bounce ~5 times from mirrors
+
     Other:
     - Mirrors that make the projectile rebound?
+
+DO NEXT:
+- Enemies
+- Mirrors
+- Level end state
+- Ammo
+- More levels
+- Music
+- sfx
 

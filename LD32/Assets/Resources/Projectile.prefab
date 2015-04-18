@@ -1,17 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &161730
+--- !u!1 &168954
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 422856}
-  - 114: {fileID: 11401148}
-  - 54: {fileID: 5495100}
-  - 65: {fileID: 6534206}
-  - 96: {fileID: 9678384}
+  - 4: {fileID: 496402}
+  - 114: {fileID: 11481236}
+  - 54: {fileID: 5413828}
+  - 65: {fileID: 6554528}
+  - 96: {fileID: 9638350}
   m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
@@ -19,24 +19,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &422856
+--- !u!4 &496402
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161730}
+  m_GameObject: {fileID: 168954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.5699997, y: .5, z: 13.4399996}
+  m_LocalPosition: {x: -4.64708996, y: -5.45720387, z: 6.25651503}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!54 &5495100
+--- !u!54 &5413828
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161730}
+  m_GameObject: {fileID: 168954}
   serializedVersion: 2
   m_Mass: .100000001
   m_Drag: 0
@@ -46,24 +46,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &6534206
+--- !u!65 &6554528
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161730}
+  m_GameObject: {fileID: 168954}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: .5}
   m_Center: {x: 0, y: 0, z: -.5}
---- !u!96 &9678384
+--- !u!96 &9638350
 TrailRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161730}
+  m_GameObject: {fileID: 168954}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -103,12 +103,12 @@ TrailRenderer:
       rgba: 16777215
   m_MinVertexDistance: .100000001
   m_Autodestruct: 0
---- !u!114 &11401148
+--- !u!114 &11481236
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161730}
+  m_GameObject: {fileID: 168954}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9de2c69727ef554e93e0a4d297d3950, type: 3}
@@ -124,5 +124,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 161730}
+  m_RootGameObject: {fileID: 168954}
   m_IsPrefabParent: 1

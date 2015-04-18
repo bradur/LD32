@@ -60,7 +60,7 @@ public class MapData {
             int startEndX = (int)startEnd.X / tile_width;
             int startEndY = (int)startEnd.Y / tile_height;
             Vector3 worldPos = new Vector3(-startEndX + 0.5f, 1f, startEndY - 1.5f);
-            Debug.Log(startEnd.Name);
+            //Debug.Log(startEnd.Name);
             if (startEnd.Name == "Start")
             {
                 player.Spawn(worldPos, tile_width, tile_height);

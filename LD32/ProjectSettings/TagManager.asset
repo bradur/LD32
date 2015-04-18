@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - wall
-  - Wall
+  - explosion
   layers:
   - Default
   - TransparentFX
@@ -18,8 +18,8 @@ TagManager:
   - projectile
   - player
   - wall
-  - 
-  - 
+  - explosion
+  - enemy
   - 
   - 
   - 
