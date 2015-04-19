@@ -44,10 +44,13 @@ Teleportation gun game:
 
 DO NEXT:
 - Enemies
-- Mirrors
+- Mirrors ( or not)
 - Level end state
 - Ammo
 - More levels
+- Level start: 
+    - show title (animated!)
+    - camera intro?
 - Music
 - sfx
 

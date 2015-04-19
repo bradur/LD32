@@ -7,6 +7,10 @@ TagManager:
   - wall
   - explosion
   - mirror
+  - GameManager
+  - MeshTileMap
+  - end
+  - projectile
   layers:
   - Default
   - TransparentFX

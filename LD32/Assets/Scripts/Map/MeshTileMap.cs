@@ -15,9 +15,9 @@ public class MeshTileMap : MonoBehaviour {
     //public Texture2D[] spriteSheet;                 // contains 2d textures to be drawn ?
     //public int tileResolution;                      // resolution of a single texture in pixels
 
-    public float tileUnit = 0.25f;
+    public float tileUnit = 0.125f;
 
-    public string mapFileName = "Assets/Maps/test.tmx";
+    private string mapFileName;
     public Player player;
     public GameObject enemyContainer;
     public GameObject wallContainer;
@@ -48,7 +48,8 @@ public class MeshTileMap : MonoBehaviour {
     MapData mapData;
 
     void Start () {
-        GenerateMesh();
+        //mapFileName = "Assets/Maps/" + mapFileName;
+        //GenerateMesh();
     }
 
     void GetTiles()
@@ -90,6 +91,11 @@ public class MeshTileMap : MonoBehaviour {
                 tiles[x + size * z] = new Vector2(x, size - z - 1);
             }
         }
+    }
+
+    public void SetMap(string mapName)
+    {
+        this.mapFileName = "Assets/Maps/" + mapName;
     }
 
     public void GenerateMesh()

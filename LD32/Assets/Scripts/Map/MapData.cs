@@ -148,13 +148,17 @@ public class MapData {
         wallPref.GetComponent<Renderer>().material = wallMaterial;
         //Mesh mesh = wallPref.GetComponent<MeshFilter>().mesh;
         Mesh mesh = wallPref.GetComponent<MeshFilter>().sharedMesh;
-        Vector2 texture = new Vector2(2f, 3f);
-        float tileUnit = 0.25f;
+        Vector2 texture = new Vector2(1f, 7f);
+        float tileUnit = 0.125f;
+        int offset = 2;
+        int height = 8;
+        int offsetY = (int)(height - texture.y);
+        int margin = 1;
 
-        float left = tileUnit * texture.x;
-        float right = left + tileUnit;
-        float bottom = tileUnit * texture.y;
-        float top = bottom + tileUnit;
+        float left = tileUnit * texture.x + texture.x * offset + margin;
+        float right = left + tileUnit + texture.x * offset + margin * 2;
+        float bottom = tileUnit * texture.y + offsetY * offset + margin;
+        float top = bottom + tileUnit + offsetY * offset + margin*2;
 
         Rect wallText = new Rect(
             left,

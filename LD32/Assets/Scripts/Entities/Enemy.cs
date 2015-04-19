@@ -4,15 +4,15 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
     Animator animator;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         animator = GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+    
+    // Update is called once per frame
+    void Update () {
+    
+    }
 
     void OnCollisionEnter(Collision collision)
     {
