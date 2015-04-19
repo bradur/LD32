@@ -128,6 +128,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 0
+  levels:
+  - {fileID: 4900000, guid: 849cab33bc9553d44beaf48cc000e593, type: 3}
+  - {fileID: 4900000, guid: 7df86f6813c555a4c96d42e8c26e10ed, type: 3}
+  - {fileID: 4900000, guid: 82a2cfe65d7428a4fb5a5c97f4350341, type: 3}
+  - {fileID: 4900000, guid: 5334a35e7737a574380df4f6c82b0772, type: 3}
+  - {fileID: 4900000, guid: 7fb82a30e32757a4497b162aec399ab6, type: 3}
+  - {fileID: 4900000, guid: 98e2b6d4016b32742befa3c645647a42, type: 3}
+  - {fileID: 4900000, guid: 5a23e753be346bf4b8f163183f9be8f1, type: 3}
 --- !u!1 &217804375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,6 +2063,7 @@ GameObject:
   - 222: {fileID: 1309708811}
   - 114: {fileID: 1309708810}
   - 114: {fileID: 1309708809}
+  - 114: {fileID: 1309708812}
   m_Layer: 5
   m_Name: StartGameButton
   m_TagString: Untagged
@@ -2119,8 +2128,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 198658129}
-        m_MethodName: LoadNextLevel
+      - m_Target: {fileID: 1309708812}
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2160,6 +2169,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309708807}
+--- !u!114 &1309708812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1309708807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36a09ee3b17ac04e9e9d1d0fef82859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1366478210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2943,6 +2963,7 @@ GameObject:
   - 222: {fileID: 1915202081}
   - 114: {fileID: 1915202080}
   - 114: {fileID: 1915202079}
+  - 114: {fileID: 1915202082}
   m_Layer: 5
   m_Name: QuitGameButton
   m_TagString: Untagged
@@ -3007,8 +3028,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 198658129}
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 1915202082}
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3048,6 +3069,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1915202077}
+--- !u!114 &1915202082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1915202077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7da8cd0565b4844ab8f20f15e350837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1919227892
 GameObject:
   m_ObjectHideFlags: 0

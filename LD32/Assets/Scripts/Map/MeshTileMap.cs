@@ -16,7 +16,7 @@ public class MeshTileMap : MonoBehaviour {
     //public int tileResolution;                      // resolution of a single texture in pixels
 
     public float tileUnit = 0.125f;
-    private string mapFileName;
+    private TextAsset mapFile;
     public Player player;
     public GameObject enemyContainer;
     public GameObject wallContainer;
@@ -94,9 +94,15 @@ public class MeshTileMap : MonoBehaviour {
         }
     }
 
-    public void SetMap(string mapName)
+    public void SetMap(TextAsset map)
     {
-        this.mapFileName = "Assets/Maps/" + mapName;
+        /*if (Debug.isDebugBuild)
+        {
+            this.mapFileName = "Assets/maps/" + mapName;
+        }*/
+
+        this.mapFile = map;
+        
     }
 
     public void GenerateMesh()
@@ -126,7 +132,10 @@ public class MeshTileMap : MonoBehaviour {
 
     void LoadMap()
     {
-        mapData = new MapData(mapFileName, enemyContainer, wallContainer, enemyPrefab, player, GetComponent<MeshRenderer>().sharedMaterial);
+
+        mapData = new MapData(mapFile, enemyContainer, wallContainer, enemyPrefab, player, GetComponent<MeshRenderer>().sharedMaterial);
+
+
         /*print(mapData.tileCount);
         print(mapData.tileSetName);
         print(mapData.horizontal_tiles);

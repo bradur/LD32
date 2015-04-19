@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="Title" value="Getting your bearings"/>
+ </properties>
+ <tileset firstgid="1" name="tilemap" tilewidth="64" tileheight="64" spacing="2" margin="1">
+  <image source="../Images/tilemap.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="30">
+  <data encoding="base64" compression="zlib">
+   eJwTY2BgEBvFo3gUj+JRPIpJxIyjeBSPYpwYAGzYIyk=
+  </data>
+ </layer>
+ <objectgroup name="Enemies">
+  <object gid="3" x="576" y="1600"/>
+  <object gid="3" x="384" y="1600"/>
+  <object gid="3" x="64" y="1728"/>
+  <object gid="3" x="192" y="1856"/>
+  <object gid="3" x="960" y="1600"/>
+  <object gid="3" x="1152" y="1472"/>
+  <object gid="3" x="576" y="1408"/>
+  <object gid="3" x="320" y="1792"/>
+  <object gid="3" x="1088" y="1856"/>
+  <object gid="3" x="1152" y="1728"/>
+  <object gid="3" x="64" y="1536"/>
+  <object gid="3" x="960" y="1408"/>
+ </objectgroup>
+ <objectgroup name="StartEnd">
+  <object name="Start" type="Start" gid="4" x="576" y="1920"/>
+  <object name="End" type="End" gid="8" x="192" y="1344"/>
+ </objectgroup>
+ <objectgroup name="Walls">
+  <object gid="2" x="1216" y="1920"/>
+  <object gid="2" x="1152" y="1920"/>
+  <object gid="2" x="1088" y="1920"/>
+  <object gid="2" x="1024" y="1920"/>
+  <object gid="2" x="960" y="1920"/>
+  <object gid="2" x="896" y="1920"/>
+  <object gid="2" x="832" y="1920"/>
+  <object gid="2" x="768" y="1920"/>
+  <object gid="2" x="704" y="1920"/>
+  <object gid="2" x="640" y="1920"/>
+  <object gid="2" x="512" y="1920"/>
+  <object gid="2" x="448" y="1920"/>
+  <object gid="2" x="384" y="1920"/>
+  <object gid="2" x="320" y="1920"/>
+  <object gid="2" x="256" y="1920"/>
+  <object gid="2" x="192" y="1920"/>
+  <object gid="2" x="128" y="1920"/>
+  <object gid="2" x="64" y="1920"/>
+  <object gid="2" x="0" y="1920"/>
+  <object gid="2" x="0" y="1856"/>
+  <object gid="2" x="0" y="1792"/>
+  <object gid="2" x="0" y="1728"/>
+  <object gid="2" x="0" y="1664"/>
+  <object gid="2" x="0" y="1600"/>
+  <object gid="2" x="0" y="1536"/>
+  <object gid="2" x="0" y="1472"/>
+  <object gid="2" x="576" y="1984"/>
+  <object gid="2" x="1216" y="1856"/>
+  <object gid="2" x="1216" y="1792"/>
+  <object gid="2" x="1216" y="1664"/>
+  <object gid="2" x="1216" y="1728"/>
+  <object gid="2" x="1216" y="1600"/>
+  <object gid="2" x="1216" y="1536"/>
+  <object gid="2" x="1216" y="1472"/>
+  <object gid="2" x="1216" y="1472"/>
+  <object gid="2" x="1216" y="1408"/>
+  <object gid="2" x="1216" y="1344"/>
+  <object gid="2" x="1152" y="1344"/>
+  <object gid="2" x="1088" y="1344"/>
+  <object gid="2" x="1024" y="1344"/>
+  <object gid="2" x="960" y="1344"/>
+  <object gid="2" x="896" y="1344"/>
+  <object gid="2" x="832" y="1344"/>
+  <object gid="2" x="768" y="1344"/>
+  <object gid="2" x="704" y="1344"/>
+  <object gid="2" x="576" y="1344"/>
+  <object gid="2" x="640" y="1344"/>
+  <object gid="2" x="512" y="1344"/>
+  <object gid="2" x="448" y="1344"/>
+  <object gid="2" x="384" y="1344"/>
+  <object gid="2" x="320" y="1344"/>
+  <object gid="2" x="256" y="1344"/>
+  <object gid="2" x="128" y="1344"/>
+  <object gid="2" x="64" y="1344"/>
+  <object gid="2" x="0" y="1344"/>
+  <object gid="2" x="0" y="1408"/>
+  <object gid="2" x="512" y="1536"/>
+  <object gid="2" x="576" y="1536"/>
+  <object gid="2" x="640" y="1536"/>
+  <object gid="2" x="704" y="1536"/>
+  <object gid="2" x="704" y="1600"/>
+  <object gid="2" x="704" y="1664"/>
+  <object gid="2" x="768" y="1536"/>
+  <object gid="2" x="832" y="1536"/>
+  <object gid="2" x="896" y="1536"/>
+  <object gid="2" x="896" y="1600"/>
+  <object gid="2" x="896" y="1664"/>
+  <object gid="2" x="448" y="1536"/>
+  <object gid="2" x="448" y="1600"/>
+  <object gid="2" x="448" y="1664"/>
+  <object gid="2" x="384" y="1664"/>
+  <object gid="2" x="320" y="1664"/>
+  <object gid="2" x="256" y="1664"/>
+  <object gid="2" x="256" y="1728"/>
+  <object gid="2" x="256" y="1792"/>
+  <object gid="2" x="256" y="1856"/>
+  <object gid="2" x="256" y="1408"/>
+  <object gid="2" x="256" y="1472"/>
+ </objectgroup>
+ <objectgroup name="Objects"/>
+</map>

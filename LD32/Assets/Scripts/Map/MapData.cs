@@ -1,5 +1,6 @@
 ﻿using TiledSharp;
 using UnityEngine;
+using System.Xml.Linq;
 
 public class MapData {
 
@@ -15,10 +16,24 @@ public class MapData {
     private GameObject wallPref;
     public string mapTitle;
 
-    public MapData(string mapFile, GameObject enemyContainer, GameObject wallContainer, Enemy enemyPrefab, Player player, Material tileSheet)
+    public MapData(TextAsset mapFile, GameObject enemyContainer, GameObject wallContainer, Enemy enemyPrefab, Player player, Material tileSheet)
     {
         //enemyPrefab = Resources.Load("Enemy") as GameObject;
-        TmxMap map = new TmxMap(mapFile);
+        TmxMap map;
+        /*if (Debug.isDebugBuild)
+        {
+            map = new TmxMap(mapFileName);
+        }*/
+
+        //TextAsset mapFile = Resources.Load(mapFileName) as TextAsset;
+        //Debug.Log(mapFile.name);
+        //XDocument doc = XDocument.Parse(mapFile.text);
+        //Debug.Log(doc.Element("map").Attribute("tilewidth"));
+        //_doc.(mapFile.text);
+        //Debug.Log(mapFile.text);
+        map = new TmxMap(mapFile.text);
+
+
         horizontal_tiles = map.Width;
         vertical_tiles = map.Height;
 
