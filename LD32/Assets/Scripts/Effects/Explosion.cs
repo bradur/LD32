@@ -23,7 +23,7 @@ public class Explosion : MonoBehaviour {
 
     public void EndExplosion()
     {
-        Debug.Log("End");
+        //Debug.Log("End");
         this.animator.SetBool("explode", false);
         //this.projectile.Hide();
         

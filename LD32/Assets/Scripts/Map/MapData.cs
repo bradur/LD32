@@ -13,6 +13,7 @@ public class MapData {
     public int tileCount;
     private Enemy enemyPrefab;
     private GameObject wallPref;
+    public string mapTitle;
 
     public MapData(string mapFile, GameObject enemyContainer, GameObject wallContainer, Enemy enemyPrefab, Player player, Material tileSheet)
     {
@@ -25,6 +26,7 @@ public class MapData {
         tile_height = map.TileHeight;
 
         tileSetName = map.Tilesets[0].Name;
+        mapTitle = map.Properties["Title"];
 
         tileCount = map.Layers[0].Tiles.Count;
         tiles = new MapSquare[tileCount]; ;
@@ -33,7 +35,6 @@ public class MapData {
             tiles[i] = new MapSquare(map.Layers[0].Tiles[i]);
         }
 
-        
         int enemyCount = map.ObjectGroups[0].Objects.Count;
         //enemies = new Enemy[enemyCount];
         for (int i = 0; i < enemyCount; i++)
@@ -64,10 +65,13 @@ public class MapData {
             if (startEnd.Name == "Start")
             {
                 player.Spawn(worldPos, tile_width, tile_height);
+                GameObject startObject = (GameObject)GameObject.Instantiate(Resources.Load("SpawnPoint"), worldPos, Quaternion.identity);
             }
             else if (startEnd.Name == "End")
             {
-                GameObject endObject = (GameObject)GameObject.Instantiate(Resources.Load("LevelEndTrigger"), worldPos, Quaternion.identity);
+                GameObject endObjectPrefab = (GameObject)GameObject.Instantiate(Resources.Load("LevelEndTrigger"));
+                endObjectPrefab.transform.position = worldPos;
+                //GameObject endObject = (GameObject)GameObject.Instantiate(endObjectPrefab, worldPos, endObjectPrefab.transform.rotation);
                 //LevelEndTrigger end = endObject.GetComponent<LevelEndTrigger>();
             }
             //Vector3 worldPos = new Vector3(-(enemyX / tile_width), 0.01f, enemyY / tile_height);
@@ -150,15 +154,15 @@ public class MapData {
         Mesh mesh = wallPref.GetComponent<MeshFilter>().sharedMesh;
         Vector2 texture = new Vector2(1f, 7f);
         float tileUnit = 0.125f;
-        int offset = 2;
+        float offset = tileUnit / 64 * 2;
         int height = 8;
         int offsetY = (int)(height - texture.y);
-        int margin = 1;
+        float margin = tileUnit / 64;
 
         float left = tileUnit * texture.x + texture.x * offset + margin;
-        float right = left + tileUnit + texture.x * offset + margin * 2;
-        float bottom = tileUnit * texture.y + offsetY * offset + margin;
-        float top = bottom + tileUnit + offsetY * offset + margin*2;
+        float right = left + tileUnit + margin;
+        float bottom = tileUnit * texture.y - margin;
+        float top = bottom + tileUnit;
 
         Rect wallText = new Rect(
             left,
@@ -166,6 +170,8 @@ public class MapData {
             tileUnit,
             tileUnit
         );
+
+        Debug.Log(wallText);
 
         Vector2 text1 = new Vector2(wallText.x, wallText.y);
         Vector2 text2 = new Vector2(wallText.x + tileUnit, wallText.y);

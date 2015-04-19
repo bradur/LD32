@@ -5,6 +5,7 @@ public class LevelEndTrigger : MonoBehaviour {
 
     public GameManager gameManager;
 
+
     // Use this for initialization
     void Start () {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -27,4 +28,5 @@ public class LevelEndTrigger : MonoBehaviour {
             gameManager.LoadNextLevel();
         }
     }
+
 }

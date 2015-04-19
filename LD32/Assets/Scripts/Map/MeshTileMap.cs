@@ -16,12 +16,13 @@ public class MeshTileMap : MonoBehaviour {
     //public int tileResolution;                      // resolution of a single texture in pixels
 
     public float tileUnit = 0.125f;
-
     private string mapFileName;
     public Player player;
     public GameObject enemyContainer;
     public GameObject wallContainer;
     public Enemy enemyPrefab;
+    public int emptyTileId = 22;
+    public AnimatedText mapTitle;
 
     [HideInInspector]
     public Vector2[] tiles;
@@ -48,7 +49,7 @@ public class MeshTileMap : MonoBehaviour {
     MapData mapData;
 
     void Start () {
-        //mapFileName = "Assets/Maps/" + mapFileName;
+        //mapFileName = "Assets/Maps/level1.tmx";
         //GenerateMesh();
     }
 
@@ -107,6 +108,7 @@ public class MeshTileMap : MonoBehaviour {
         LoadMap();
         //BuildMesh();
         UpdateMesh();
+        mapTitle.AnimateTitle(mapData.mapTitle);
     }
 
     /*private void PurgeData()
@@ -135,7 +137,7 @@ public class MeshTileMap : MonoBehaviour {
             //print(mapData.tiles[i].tileSetId + " " + mapData.tiles[i].x + " " + mapData.tiles[i].y + "-----------------");
             //print("");
             //print(mapData.tiles[i].tileSetId);
-            GenerateSquare(mapData.tiles[i].x, mapData.tiles[i].y, tiles[mapData.tiles[i].tileSetId-1]);
+            GenerateSquare(mapData.tiles[i].x, mapData.tiles[i].y, mapData.tiles[i].tileSetId);
         }
         /*foreach(MapSquare mapSquare in mapData.tiles ){
             print("\n---");
@@ -161,32 +163,50 @@ public class MeshTileMap : MonoBehaviour {
         }
     }*/
 
-    void GenerateSquare(int x, int z, Vector2 texture)
+    void GenerateSquare(int x, int z, int textureId)
     {
 
-        vertices.Add(new Vector3(-x, 0, z));
-        vertices.Add(new Vector3(-x + 1, 0, z));
-        vertices.Add(new Vector3(-x + 1, 0, z - 1));
-        vertices.Add(new Vector3(-x, 0, z - 1));
+        Debug.Log(textureId);
 
-        normals.Add(Vector3.up);
-        normals.Add(Vector3.up);
-        normals.Add(Vector3.up);
-        normals.Add(Vector3.up);
 
-        triangles.Add(squareCount * 4);
-        triangles.Add((squareCount * 4) + 1);
-        triangles.Add((squareCount * 4) + 3);
-        triangles.Add((squareCount * 4) + 1);
-        triangles.Add((squareCount * 4) + 2);
-        triangles.Add((squareCount * 4) + 3);
+        Vector3 normal = Vector3.up;
+        if(textureId == this.emptyTileId){
+            Debug.Log("empty tile!");
+            //normal = Vector3.down;
+        }
+        else
+        {
+            Vector2 texture = tiles[textureId - 1];
+            vertices.Add(new Vector3(-x, 0, z));
+            vertices.Add(new Vector3(-x + 1, 0, z));
+            vertices.Add(new Vector3(-x + 1, 0, z - 1));
+            vertices.Add(new Vector3(-x, 0, z - 1));
+            normals.Add(normal);
+            normals.Add(normal);
+            normals.Add(normal);
+            normals.Add(normal);
 
-        uv.Add(new Vector2(tileUnit * texture.x, tileUnit * texture.y + tileUnit));
-        uv.Add(new Vector2(tileUnit * texture.x + tileUnit, tileUnit * texture.y + tileUnit));
-        uv.Add(new Vector2(tileUnit * texture.x + tileUnit, tileUnit * texture.y));
-        uv.Add(new Vector2(tileUnit * texture.x, tileUnit * texture.y));
+            triangles.Add(squareCount * 4);
+            triangles.Add((squareCount * 4) + 1);
+            triangles.Add((squareCount * 4) + 3);
+            triangles.Add((squareCount * 4) + 1);
+            triangles.Add((squareCount * 4) + 2);
+            triangles.Add((squareCount * 4) + 3);
 
-        squareCount++;
+            /*uv.Add(new Vector2(tileUnit * texture.x, tileUnit * texture.y + tileUnit));
+            uv.Add(new Vector2(tileUnit * texture.x + tileUnit, tileUnit * texture.y + tileUnit));
+            uv.Add(new Vector2(tileUnit * texture.x + tileUnit, tileUnit * texture.y));
+            uv.Add(new Vector2(tileUnit * texture.x, tileUnit * texture.y));*/
+
+
+            uv.Add(new Vector2(tileUnit * texture.x + tileUnit, tileUnit * texture.y));
+            uv.Add(new Vector2(tileUnit * texture.x, tileUnit * texture.y));
+            uv.Add(new Vector2(tileUnit * texture.x, tileUnit * texture.y + tileUnit));
+            uv.Add(new Vector2(tileUnit * texture.x + tileUnit, tileUnit * texture.y + tileUnit));
+            squareCount++;
+        }
+
+        
     }
 
 

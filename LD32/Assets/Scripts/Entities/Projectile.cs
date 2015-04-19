@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour {
 
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.tag == "wall" || coll.gameObject.tag == "end")
+        if (coll.gameObject.tag == "wall" || coll.gameObject.tag == "end" || coll.gameObject.tag == "spawn")
         {
             this.player.Teleport(transform.position);
             //Debug.Log("[projectilepos]: " + transform.position);

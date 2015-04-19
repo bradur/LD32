@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour {
         if (collision.gameObject.tag == "explosion")
         {
             Debug.Log("I've been hit!");
+
             AnimateDeath();
         }
     }
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour {
 
     public void Die()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AddAmmo();
         Destroy(gameObject);
     }
 }

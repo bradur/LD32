@@ -11,6 +11,10 @@ TagManager:
   - MeshTileMap
   - end
   - projectile
+  - spawn
+  - GameOverMenu
+  - music
+  - hole
   layers:
   - Default
   - TransparentFX
