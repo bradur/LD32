@@ -8,11 +8,13 @@ public class Player : MonoBehaviour {
     private Vector3 rotation;
     bool shotInTheAir = false;
     public float projectileSpeed;
+    public float projectileLifeTime = 10f;
     private int sizeX;
     private int sizeY;
     public int ammoCount = 2;
     public GameManager gameManager;
     public AnimatedText ammoCountDisplay;
+    private float projectileTime;
 
     // Use this for initialization
     void Start () {
@@ -33,20 +35,31 @@ public class Player : MonoBehaviour {
         {
             Shoot();
         }
+        if(shotInTheAir){
+            projectileTime -= Time.deltaTime;
+            if (projectileTime <= 0f)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("projectile"));
+                gameManager.EndGame();
+            }
+        }
     }
 
     IEnumerator WeaponCoolDown()
     {
         yield return new WaitForSeconds(1);
-        this.shotInTheAir = false;
+        if (this.ammoCount == 0)
+        {
+            gameManager.EndGame();
+        }
     }
 
     public void Teleport(Vector3 pos)
     {
         Vector3 newpos = new Vector3((int)Mathf.Round(pos.x), 0.5f, (int)Mathf.Round(pos.z));
         transform.position = pos;
-        //this.shotInTheAir = false;
-        StartCoroutine(WeaponCoolDown());
+        this.shotInTheAir = false;
+        //StartCoroutine(WeaponCoolDown());
     }
 
     public void AddAmmo()
@@ -66,11 +79,12 @@ public class Player : MonoBehaviour {
         {
             if (this.ammoCount == 0)
             {
-                gameManager.EndGame();
+                StartCoroutine(WeaponCoolDown());
             }
             else
             {
                 this.shotInTheAir = true;
+                projectileTime = projectileLifeTime;
                 this.ammoCount -= 1;
                 ammoCountDisplay.Animate(-1);
                 //gameManager.LoseAmmo();
