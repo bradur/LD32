@@ -16,6 +16,10 @@ public class Player : MonoBehaviour {
     public AnimatedText ammoCountDisplay;
     private float projectileTime;
 
+    public AudioSource soundTeleport;
+    public AudioSource soundShoot;
+    public AudioSource soundPowerup;
+
     // Use this for initialization
     void Start () {
         rotation = new Vector3(0f, rotationMagnitude, 0f);
@@ -59,6 +63,7 @@ public class Player : MonoBehaviour {
         Vector3 newpos = new Vector3((int)Mathf.Round(pos.x), 0.5f, (int)Mathf.Round(pos.z));
         transform.position = pos;
         this.shotInTheAir = false;
+        soundTeleport.Play();
         //StartCoroutine(WeaponCoolDown());
     }
 
@@ -66,6 +71,7 @@ public class Player : MonoBehaviour {
     {
         this.ammoCount += 1;
         ammoCountDisplay.Animate(1);
+        soundPowerup.Play();
     }
 
     /*public void SetAmmo(int ammo)
@@ -83,6 +89,7 @@ public class Player : MonoBehaviour {
             }
             else
             {
+                soundShoot.Play();
                 this.shotInTheAir = true;
                 projectileTime = projectileLifeTime;
                 this.ammoCount -= 1;

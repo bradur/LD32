@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="64" tileheight="64">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="5" tilewidth="64" tileheight="64">
  <properties>
-  <property name="Title" value="Getting your bearings"/>
+  <property name="Title" value="Longtemplate"/>
  </properties>
  <tileset firstgid="1" name="tilemap" tilewidth="64" tileheight="64" spacing="2" margin="1">
   <image source="../Images/tilemap.png" width="512" height="512"/>
  </tileset>
- <layer name="Tile Layer 1" width="20" height="30">
+ <layer name="Tile Layer 1" width="40" height="5">
   <data encoding="base64" compression="zlib">
-   eJwTY2BgEBvFo3gUj+JRPIpJxIyjeBSPYpwYAGzYIyk=
+   eJxjZGBgYBzFo3gUY8UAPT8AyQ==
   </data>
  </layer>
  <objectgroup name="Enemies"/>
